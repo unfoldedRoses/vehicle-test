@@ -18,8 +18,6 @@ app.get('/', (req, res) => {
 });
 
 
-
-
 // Sync the database and start the server
 db.sequelize.sync()
   .then(() => {
