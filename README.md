@@ -51,7 +51,7 @@ Created a responsive frontend
 
 Here is the database schema used in this project:
 
-![Database Schema](./sql.png)
+![Database Schema](./server/sql.png)
 
 🌟 Acknowledgment
 A big thanks to Octalogic Tech for this opportunity! 🚀 .
