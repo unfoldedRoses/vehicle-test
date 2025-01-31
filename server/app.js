@@ -1,4 +1,4 @@
-require('dotenv').config(); // Load environment variables - VERY IMPORTANT, MUST BE AT THE TOP
+require('dotenv').config(); 
 
 const express = require('express');
 const app = express();
