@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
       defaultValue: 'user',
     },
   }, {
-    tableName: 'users', // Optional: If you want a different table name
+    tableName: 'users', 
   });
 
  
