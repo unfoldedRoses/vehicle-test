@@ -49,6 +49,10 @@ Created a responsive frontend
 
 💬 Contact: praveendb009@gmail.com Feel free to reach out if you have any questions!
 
+Here is the database schema used in this project:
+
+![Database Schema](./server/sql.png)
+
 🌟 Acknowledgment
 A big thanks to Octalogic Tech for this opportunity! 🚀 .
 
