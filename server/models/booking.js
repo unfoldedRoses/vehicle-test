@@ -1,34 +1,41 @@
-// models/booking.js
-
 'use strict';
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-    const Booking = sequelize.define('Booking', {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-      },
-      start_date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
-      end_date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
-      booking_status: {
-        type: DataTypes.STRING,
-        defaultValue: 'pending',
-      },
-    }, { tableName: 'bookings' });
-  
-    Booking.associate = (models) => {
+  class Booking extends Model {
+    static associate(models) {
       Booking.belongsTo(models.User, { foreignKey: 'user_id' });
       Booking.belongsTo(models.Vehicle, { foreignKey: 'vehicle_id' });
-    };
-  
-    return Booking;
-  };
+    }
+  }
+  Booking.init({
+    start_date: DataTypes.DATE,
+    end_date: DataTypes.DATE,
+    booking_status: {
+      type: DataTypes.STRING,
+      defaultValue: 'pending',
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'users',  
+        key: 'id'
+      }
+    },
+    vehicle_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'vehicles',  
+        key: 'id'
+      }
+    },
+  }, {
+    sequelize,
+    modelName: 'Booking',
+    tableName: 'bookings',
+     timestamps: false
+  });
+  return Booking;
+};

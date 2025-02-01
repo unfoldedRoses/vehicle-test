@@ -1,0 +1,21 @@
+# Node.js and npm
+node_modules
+
+# Environment variables
+.env
+*.env
+
+# IDE-specific files (if you use them)
+.idea/
+.vscode/
+
+# OS-specific files (optional, but good practice)
+.DS_Store
+
+# Logs and temporary files (optional)
+*.log
+*.tmp
+
+# Database files (if applicable and you don't want to commit them)
+*.sqlite
+*.db

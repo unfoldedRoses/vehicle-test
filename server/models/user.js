@@ -1,33 +1,21 @@
-// models/user.js
-
 'use strict';
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  const User = sequelize.define('User', {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-    },
-    first_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    last_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    role: {
-      type: DataTypes.STRING,
-      defaultValue: 'user',
-    },
+  class User extends Model {
+    static associate(models) {
+      User.hasMany(models.Booking, { foreignKey: 'user_id' });
+    }
+  }
+  User.init({
+    first_name: DataTypes.STRING,
+    last_name: DataTypes.STRING,
+   
   }, {
-    tableName: 'users', 
+    sequelize,
+    modelName: 'User',
+    tableName: 'users',  
+    timestamps: false,  
   });
-
- 
-
   return User;
 };
