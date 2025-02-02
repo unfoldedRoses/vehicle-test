@@ -1,58 +1,120 @@
-🚀 Octalogic Tech - Technical Test
+# 🚀 Octalogic Tech - Technical Test
+
 Welcome! This repository contains my solutions for the Octalogic Tech technical assessment.
 
-📌 Overview
-This project is part of the technical evaluation for the Octalogic Tech hiring process. The test assesses my skills in Full Stack Development, including SQL database management, API handling, and frontend implementation.
+## 📌 Overview
 
-🛠 Tech Stack
-Frontend: React.js (Material UI + Tailwind for styling)
-Backend: Node.js, Express.js
-Database: PostgreSQL / MySQL
-Other Tools: Docker, Git, Postman
-📋 Project Setup
-🔧 Prerequisites
-Ensure you have the following installed:
+This project demonstrates my full-stack development skills, covering SQL database management, backend API development, and frontend implementation.  It's a vehicle booking application where users can select a vehicle type, model, and date range for booking.
 
-Node.js (LTS version)
-PostgreSQL / MySQL
-Git
-💻 Installation Steps
-Clone the repository
+## 🛠 Tech Stack
 
+*   **Frontend:** React.js (Material UI + Tailwind CSS for styling), Jest (for testing)
+*   **Backend:** Node.js, Express.js,Sequelize (ORM)
+*   **Database:** PostgreSQL
+*   **Other Tools:** Git, Postman (for API testing), Swagger (for API documentation)
 
-git clone https://github.com/unfoldedRoses/vehicle-test
-cd vehivle-tes
-Install dependencies
-Set up the database
+## 📋 Project Setup
 
-Create a .env file and add database credentials
-Run migrations if required
-Run the application
+### 🔧 Prerequisites
 
+Make sure you have the following installed:
 
-npm start
-API Testing (Optional)
+*   Node.js (LTS version recommended)
+*   PostgreSQL (Preferred) or MySQL
+*   Git
 
-Use Postman or a browser to test endpoints
+### 💻 Installation and Startup Steps
 
+1.  **Clone the repository and checkout the release branch:**
 
-✔ Step 2: Technical Test
+    ```bash
+    git clone [https://github.com/unfoldedRoses/vehicle-test](https://github.com/unfoldedRoses/vehicle-test)
+    cd vehicle-test
+    git checkout release/1.0.0 
+    ```
 
-Developed a full-stack solution
-Integrated a SQL database
-Implemented backend APIs
-Created a responsive frontend
-📩 Submission
-📅 Deadline: 2nd February 2024, 11 PM IST
+2.  **Database Setup (Choose one):**
 
-🔗 Repository Link:https://github.com/unfoldedRoses/vehicle-test/
+    *   **PostgreSQL (Recommended):**
+        1.  Install PostgreSQL.
+        2.  Create a database named `vehicle_booking` (or your preferred name).
+        3.  Create a `.env` file in the `server` directory and add your database credentials:
 
-💬 Contact: praveendb009@gmail.com Feel free to reach out if you have any questions!
+            ```
+            DATABASE_URL=postgres://user:password@host:port/database
+            # Example:
+            # DATABASE_URL=postgres://postgres:password@localhost:5432/vehicle_booking
+            ```
 
-Here is the database schema used in this project:
+        4.  **Import the SQL dump:** Import the provided SQL dump file (`vehicle_booking.dump`) into your PostgreSQL database. You can use `pg_restore` for this.
 
-![Database Schema](./server/sql.png)
+   
 
-🌟 Acknowledgment
-A big thanks to Octalogic Tech for this opportunity! 🚀 .
+3.  **Backend Startup:**
 
+    1.  Navigate to the server directory:
+
+        ```bash
+        cd server
+        ```
+
+    2.  Install server-side dependencies:
+
+        ```bash
+        npm install
+        ```
+
+    3.  **Import the SQL :** Import the provided SQL dump file (`vehicle_booking.sql`) into your PostgreSQL database. You can use `pg_restore` for this.
+
+   4.  Start the backend server:
+
+        ```bash
+        npm start
+        ```
+
+        The backend should be running on port 3000 (or as configured in your `.env` file).
+
+4.  **Frontend Startup:**
+
+    1.  Navigate to the client directory:
+
+        ```bash
+        cd client
+        ```
+
+    2.  Install client-side dependencies:
+
+        ```bash
+        npm install
+        ```
+
+    3.  Start the frontend development server:
+
+        ```bash
+        npm start
+        ```
+
+        The frontend should be running on port 3000.
+
+### 💾 SQL Dump Files
+
+The repository includes SQL dump files for both PostgreSQL and MySQL:
+
+*   `vehicle_booking.dump` (PostgreSQL)
+*   `vehicle_booking.sql` (MySQL)
+
+Use the appropriate file for your chosen database. These files contain the initial database schema and seed data.
+
+## ⚙️ API Endpoints (Swagger Documentation)
+
+The API documentation is available via Swagger UI. After starting the backend server, access the Swagger UI at:
+http://localhost:3000/api/v1/vehicle/api-docs/
+
+## Key Features and Enhancements
+
+*   **Comprehensive Testing:**  The application includes extensive unit and integration tests for frontend, Jest and React Testing Library were used for frontend testing.
+*   **Advanced Form Validation:**  Robust form validation is implemented using Formik to ensure data integrity and provide helpful feedback to the user.
+*   **Improved UI/UX:**  Loading indicators are displayed during API calls, and error messages are more user-friendly.  Keyboard navigation is supported for improved accessibility.
+*   **API Rate Limiting:**  Rate limiting has been added to API endpoints to prevent abuse and ensure availability.
+*   **Database Optimization:**  An index was added to the `bookings` table to improve the performance of availability checks.
+*   **Security:**  Parameterized queries are used throughout the backend to prevent SQL injection vulnerabilities.
