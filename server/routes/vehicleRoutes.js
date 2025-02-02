@@ -29,32 +29,7 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
-[
-    {
-      "id": 1,
-      "available": true,
-      "type_id": 1,
-      "model_id": 1,
-      "vehicleModel": {
-        "model_name": "Maruti Swift"
-      },
-      "vehicleType": {
-        "type_name": "Hatchback"
-      }
-    },
-    {
-      "id": 2,
-      "available": true,
-      "type_id": 1,
-      "model_id": 2,
-      "vehicleModel": {
-        "model_name": "Hyundai i10"
-      },
-      "vehicleType": {
-        "type_name": "Hatchback"
-      }
-    }
-  ]
+
 
 /**
  * @swagger
