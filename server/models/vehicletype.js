@@ -8,7 +8,12 @@ module.exports = (sequelize) => {
     }
   }
   VehicleType.init({
-    type_name: DataTypes.STRING
+    type_name: DataTypes.STRING,
+    wheels: {  // <--- Add the wheels property here
+      type: DataTypes.INTEGER, // Or DataTypes.SMALLINT
+      allowNull: true,        // Or allowNull: false if it's always required
+      defaultValue: null       // Important: Add a default value (or set it in your database)
+  },
   }, {
     sequelize,
     modelName: 'VehicleType',
