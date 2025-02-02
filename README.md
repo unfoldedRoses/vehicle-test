@@ -30,7 +30,7 @@ Make sure you have the following installed:
     ```bash
     git clone [https://github.com/unfoldedRoses/vehicle-test](https://github.com/unfoldedRoses/vehicle-test)
     cd vehicle-test
-    git checkout release/1.0.0 
+    git checkout release/2.0.0 
     ```
 
 2.  **Database Setup (PostgreSQL - Recommended):**
