@@ -34,7 +34,7 @@ const Step1 = ({ userData, handleChange, onNext }) => {
                     First Name
                 </label>
                 <TextField
-                    label="First Name"
+                    
                     variant="outlined"
                     fullWidth
                     name="first_name"
@@ -54,7 +54,7 @@ const Step1 = ({ userData, handleChange, onNext }) => {
                     Last Name
                 </label>
                 <TextField
-                    label="Last Name"
+                   
                     variant="outlined"
                     fullWidth
                     name="last_name"
