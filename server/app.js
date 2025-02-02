@@ -20,9 +20,9 @@ app.use(express.urlencoded({ extended: true })); // Enable parsing URL-encoded r
 
 
 // Mount Routes
-app.use('/api/users', userRoutes);
-app.use('/api/vehicle', vehicleRoutes);
-app.use('/api/booking', bookingRoutes);
+app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/vehicle', vehicleRoutes);
+app.use('/api/v1/booking', bookingRoutes);
 
 
 // Root Route (optional)
