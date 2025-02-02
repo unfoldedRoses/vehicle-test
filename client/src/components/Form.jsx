@@ -8,12 +8,12 @@ import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
 import Step4 from './Steps/Step4';
 import Step5 from './Steps/Step5';
-
+import { ToastContainer, toast } from 'react-toastify';
 const Form = () => {
     const [step, setStep] = useState(1);
     const [userData, setUserData] = useState({
-        firstName: '',
-        lastName: '',
+        first_name: '',
+        last_name: '',
         wheels: '',
         vehicleType: '',
         specificModel: '',
@@ -59,7 +59,7 @@ const Form = () => {
             setLoading(true);
             setError(null);
             try {
-                const response = await axios.get(`http://localhost:3000/api/vehicle/models?type=${typeId}`);
+                const response = await axios.get(`${apiUrl}/vehicle/models?type=${typeId}`);
                 setSpecificModels(response.data.map(model => model.model_name));
             } catch (error) {
                 console.error("Error fetching specific models:", error);
@@ -90,13 +90,14 @@ const Form = () => {
 
     const handleSubmit = async () => {
         console.log('Form Data Submitted:', userData);
+        const apiUrl = import.meta.env.VITE_API_URL;
         setError(null);
         try {
-            const response = await axios.post('http://localhost:3000/api/bookings', userData);
-            if (response.status !== 200) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            const response = await axios.post(`${apiUrl}/booking/create`, userData);
+            if (response.status !== 201) { // Check for 201 (Created) status, not 200
+                throw new Error(`HTTP error! status: ${response.status}, message: ${response.data?.error || 'Unknown error'}`); // Include error message from server
             }
-            alert("Booking created successfully!");
+            toast.success("Booking created successfully!");
             setUserData({
                 firstName: '',
                 lastName: '',
@@ -108,8 +109,26 @@ const Form = () => {
             });
             setStep(1);
         } catch (error) {
-            console.error("Error submitting booking:", error);
-            setError(error.response?.data?.error || error.message);
+            toast.error("Sorry booking not stored:", error);
+            // More informative error handling:
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                console.error("Response data:", error.response.data);
+                console.error("Response status:", error.response.status);
+                console.error("Response headers:", error.response.headers);
+                setError(error.response.data.error || error.message || "An error occurred."); // Prioritize server error message
+            } else if (error.request) {
+                // The request was made but no response was received
+                
+                console.error("Request error:", error.request);
+                setError("No response received.");
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                toast.error(error.message);
+                setError(error.message || "A setup error occurred.");
+            }
+    
         }
     };
 

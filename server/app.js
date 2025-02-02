@@ -9,6 +9,7 @@ const db = require('./models/index.js'); // Import your Sequelize models
 
 const userRoutes = require('./routes/userRoutes');       // Import user routes
 const vehicleRoutes = require('./routes/vehicleRoutes');       // Import user routes
+const bookingRoutes = require('./routes/bookingRoutes');       // Import user routes
 
 
 
@@ -21,8 +22,7 @@ app.use(express.urlencoded({ extended: true })); // Enable parsing URL-encoded r
 // Mount Routes
 app.use('/api/users', userRoutes);
 app.use('/api/vehicle', vehicleRoutes);
-
-
+app.use('/api/booking', bookingRoutes);
 
 
 // Root Route (optional)

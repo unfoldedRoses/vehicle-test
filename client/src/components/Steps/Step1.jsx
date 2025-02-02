@@ -10,8 +10,8 @@ const Step1 = ({ userData, handleChange, onNext }) => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="firstName"
-                value={userData.firstName}
+                name="first_name"
+                value={userData.first_name}
                 onChange={handleChange}
                 required
             />
@@ -20,8 +20,8 @@ const Step1 = ({ userData, handleChange, onNext }) => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                name="lastName"
-                value={userData.lastName}
+                name="last_name"
+                value={userData.last_name}
                 onChange={handleChange}
                 required
             />

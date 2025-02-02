@@ -5,7 +5,7 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import { ThemeProvider, createTheme } from '@mui/material/styles'; // Import MUI ThemeProvider and createTheme
 import Form from './components/Form'; // Import your Form component
-
+import { ToastContainer } from 'react-toastify';
 // Create a MUI theme (you can customize this)
 const theme = createTheme({
   palette: {
@@ -25,6 +25,7 @@ function App() {
     <ThemeProvider theme={theme}> {/* Wrap your app with ThemeProvider */}
       <>
          <Form /> 
+         <ToastContainer /> 
       </>
     </ThemeProvider>
   );
